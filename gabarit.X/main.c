@@ -55,37 +55,35 @@ void arret(void);           // Fonction pour arreter le robot
 //-----------------------------------------------------------//
 void main(void)
 {
-    SYSTEM_Initialize();    
+    SYSTEM_Initialize();    // Fonction pour initialiser le systeme
 
-    while(1) // Boucle infinie
+    while(1)    // Boucle infinie
     {
-        if ((!input(CLD)) && (!input(CLG))) // Si les deux capteurs de ligne sont hors ligne
+        bool CLD_STATE = input(CLD);    // On lit l'etat du capteur de ligne droit
+        bool CLG_STATE = input(CLG);    // On lit l'etat du capteur de ligne gauche
+
+        if (!CLD_STATE && !CLG_STATE)   // Si les deux capteurs de ligne sont hors ligne
         {
             avancer();  // On avance
         }
-        if ((input(CLD)) && (!input(CLG)))  // Si le capteur de ligne gauche est hors ligne
+        
+        if (CLD_STATE && !CLG_STATE)    // Si le capteur de ligne droit est sur la ligne
         {
             TGB();  // On tourne brusquement a gauche
         }
-        if ((!input(CLD)) && (input(CLG)))  // Si le capteur de ligne droit est hors ligne
+        
+        if (!CLD_STATE && CLG_STATE)    // Si le capteur de ligne gauche est sur la ligne
         {
             TDB();  // On tourne brusquement a droite
         }
-        if ((input(CLD)) && (input(CLG)))   // Si les deux capteurs de ligne sont sur la ligne
+        
+        if (CLD_STATE && CLG_STATE)    // Si les deux capteurs de ligne sont sur la ligne
         {
-            // Static sert a garder la valeur de la variable entre les appels de la fonction
-            static int x = 0;   // Variable pour alterner entre avancer et arreter
-            if (x == 0)        // Si x est egal a 0
+            for (int i = 0; i < 2; i++) // On avance pendant 250ms deux fois
             {
-                avancer_250ms(); // On avance pendant 250ms
-                x = 1;        // On change la valeur de x pour alterner
+                avancer_250ms();    // On avance pendant 250ms
             }
-            else
-            {
-                arret();    // On arrete le robot
-                //__delay_ms(10000); // Delai pour arreter
-                x = 0;
-            }
+            arret();    // On arrete le robot
         }
     }
 }
@@ -196,11 +194,11 @@ void TGB(void) {
         //-------------------------------------------//
         output_high(ENA);   // Activation du moteur A
         output_high(ENB);   // Activation du moteur B
-        __delay_us(200);    // Delai de 250 microsecondes
+        __delay_us(200);    // Delai de 200 microsecondes
 
         output_low(ENA);    // Desactivation du moteur A
         output_low(ENB);    // Desactivation du moteur B
-        __delay_us(300);    // Delai de 250 microsecondes
+        __delay_us(300);    // Delai de 300 microsecondes
     }
     arret();    // On arrete le robot
 }
@@ -232,11 +230,11 @@ void TDB(void) {
         //-------------------------------------------//
         output_high(ENA);   // Activation du moteur A
         output_high(ENB);   // Activation du moteur B
-        __delay_us(200);    // Delai de 250 microsecondes
+        __delay_us(200);    // Delai de 200 microsecondes
 
         output_low(ENA);    // Desactivation du moteur A
         output_low(ENB);    // Desactivation du moteur B
-        __delay_us(300);    // Delai de 250 microsecondes
+        __delay_us(300);    // Delai de 300 microsecondes
     }
     arret();    // On arrete le robot
 }
