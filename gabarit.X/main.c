@@ -31,8 +31,8 @@
 //------------------------ CAPTEURS -------------------------//
 #define LED PIN_A5  // Broche LED  
 //------------------- CAPTEURS OBSTACLE ---------------------//
-#define COD PIN_B1  // Broche CAPTEUR OBSTACLE DROIT
-#define COG PIN_B3  // Broche CAPTEUR OBSTACLE GAUCHE
+#define COG PIN_B2  // Broche CAPTEUR OBSTACLE GAUCHE
+#define COD PIN_B3  // Broche CAPTEUR OBSTACLE DROIT
 //-------------------- CAPTEURS LIGNE -----------------------//
 #define CLD PIN_B0  // Broche CAPTEUR LIGNE DROIT
 #define CLG PIN_B7  // Broche CAPTEUR LIGNE GAUCHE
@@ -125,10 +125,10 @@ void avancer_250ms(void) {
         //-------------------------------------------//
         output_high(ENA);   // On active le moteur gauche
         output_high(ENB);   // On active le moteur droit
-        __delay_us(220);      // On attend 220us
+        __delay_us(250);      // On attend 220us
         output_low(ENA);    // On desactive le moteur gauche
         output_low(ENB);    // On desactive le moteur droit
-        __delay_us(280);      // On attend 280us
+        __delay_us(250);      // On attend 280us
     }
     arret();    // On arrete le robot
 }
@@ -159,10 +159,10 @@ void avancer(void) {
         //-------------------------------------------//
         output_high(ENA);   // On active le moteur gauche
         output_high(ENB);   // On active le moteur droit
-        __delay_us(220);      // On attend 220us
+        __delay_us(250);      // On attend 220us
         output_low(ENA);    // On desactive le moteur gauche
         output_low(ENB);    // On desactive le moteur droit
-        __delay_us(280);      // On attend 280us
+        __delay_us(250);      // On attend 280us
     }
     arret();    // On arrete le robot
 }
@@ -194,11 +194,11 @@ void TGB(void) {
         //-------------------------------------------//
         output_high(ENA);   // Activation du moteur A
         output_high(ENB);   // Activation du moteur B
-        __delay_us(200);    // Delai de 200 microsecondes
+        __delay_us(250);    // Delai de 200 microsecondes
 
         output_low(ENA);    // Desactivation du moteur A
         output_low(ENB);    // Desactivation du moteur B
-        __delay_us(300);    // Delai de 300 microsecondes
+        __delay_us(250);    // Delai de 300 microsecondes
     }
     arret();    // On arrete le robot
 }
@@ -230,11 +230,11 @@ void TDB(void) {
         //-------------------------------------------//
         output_high(ENA);   // Activation du moteur A
         output_high(ENB);   // Activation du moteur B
-        __delay_us(200);    // Delai de 200 microsecondes
+        __delay_us(250);    // Delai de 200 microsecondes
 
         output_low(ENA);    // Desactivation du moteur A
         output_low(ENB);    // Desactivation du moteur B
-        __delay_us(300);    // Delai de 300 microsecondes
+        __delay_us(250);    // Delai de 300 microsecondes
     }
     arret();    // On arrete le robot
 }
