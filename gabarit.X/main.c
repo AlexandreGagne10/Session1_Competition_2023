@@ -98,7 +98,7 @@ void main(void)
 //                                                           //
 //                        Avance 250ms                       //
 //     Le robot avance pendant 250ms a une vitesse de 44%    //
-//     de sa vitesse max. Apr?s 250ms, le robot s'arrete.    //
+//     de sa vitesse max. Apres 250ms, le robot s'arrete.    //
 //                                                           //
 //-----------------------------------------------------------//
 void avancer_250ms(void) {
@@ -118,8 +118,8 @@ void avancer_250ms(void) {
     {
         //-------------------------------------------//
         //                                           //
-        //            Puissance: 44%                 //
-        //    Time High    220us   =   44 %          //
+        //            Puissance: 50%                 //
+        //    Time High    220us   =   50 %          //
         //    Time TOT     500us   =  100 %          //
         //                                           //
         //-------------------------------------------//
@@ -152,17 +152,17 @@ void avancer(void) {
     {
         //-------------------------------------------//
         //                                           //
-        //            Puissance: 44%                 //
-        //    Time High    220us   =   44 %          //
+        //            Puissance: 48%                 //
+        //    Time High    240us   =   48 %          //
         //    Time TOT     500us   =  100 %          //
         //                                           //
         //-------------------------------------------//
         output_high(ENA);   // On active le moteur gauche
         output_high(ENB);   // On active le moteur droit
-        __delay_us(230);      // On attend 220us
+        __delay_us(220);      // On attend 220us
         output_low(ENA);    // On desactive le moteur gauche
         output_low(ENB);    // On desactive le moteur droit
-        __delay_us(270);      // On attend 280us
+        __delay_us(280);      // On attend 280us
     }
     arret();    // On arrete le robot
 }
@@ -187,8 +187,8 @@ void TGB(void) {
     {
         //-------------------------------------------//
         //                                           //
-        //            Puissance: 40%                 //
-        //    Time High    200us   =   40 %          //
+        //            Puissance: 50%                 //
+        //    Time High    200us   =   50 %          //
         //    Time TOT     500us   =  100 %          //
         //                                           //
         //-------------------------------------------//
@@ -197,8 +197,9 @@ void TGB(void) {
         __delay_us(300);    // Delai de 200 microsecondes
 
         output_low(ENA);    // Desactivation du moteur A
+        __delay_us(100);
         output_low(ENB);    // Desactivation du moteur B
-        __delay_us(200);    // Delai de 200 microsecondes
+        __delay_us(100);    // Delai de 200 microsecondes
     }
     arret();    // On arrete le robot
 }
@@ -223,8 +224,8 @@ void TDB(void) {
     {
         //-------------------------------------------//
         //                                           //
-        //            Puissance: 40%                 //
-        //    Time High    200us   =   40 %          //
+        //            Puissance: 50%                 //
+        //    Time High    200us   =   50 %          //
         //    Time TOT     500us   =  100 %          //
         //                                           //
         //-------------------------------------------//
@@ -233,8 +234,9 @@ void TDB(void) {
         __delay_us(300);    // Delai de 250 microsecondes
 
         output_low(ENA);    // Desactivation du moteur A
+        __delay_us(100);
         output_low(ENB);    // Desactivation du moteur B
-        __delay_us(200);    // Delai de 200 microsecondes
+        __delay_us(100);    // Delai de 200 microsecondes
     }
     arret();    // On arrete le robot
 }
